@@ -1,0 +1,159 @@
+{
+  "main": {
+    "id": "45bf95e2568701b8",
+    "type": "split",
+    "children": [
+      {
+        "id": "0009bf4b959bd8cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ee7698b11c90a62e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Drafts/무제 파일.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1f9501a0221bbd9d",
+    "type": "split",
+    "children": [
+      {
+        "id": "f474eb0731af13b8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "542ef9e114b55c7e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "40911ced4871a61b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2f1019aa1f4b990f",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c4abb72a2b698f97",
+    "type": "split",
+    "children": [
+      {
+        "id": "e296e50b4e2c6d72",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5b4661750981eb92",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Drafts/무제 파일.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7a84421e547a3fe1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Drafts/무제 파일.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c0f23f4ae2adfcb6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cbad60d8d6ba4e85",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Drafts/무제 파일.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "audio-recorder:녹음 시작/중지": false
+    }
+  },
+  "active": "ee7698b11c90a62e",
+  "lastOpenFiles": [
+    "Recording 20230116164032.webm",
+    "Drafts/무제 파일.md",
+    "Recording 20230116163918.webm",
+    "Recording 20230116163851.webm",
+    "Recording 20230116163021.webm",
+    "Drafts/무제 파일 1.md"
+  ]
+}

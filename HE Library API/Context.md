@@ -53,9 +53,7 @@ Enable several features at once
  + FHE
  + SCHEMESWITCH
 
-
 ---
-**TODO**
 
 ## SEAL
 
@@ -70,51 +68,23 @@ Enable several features at once
 ~~~
 
 ### Related Classes
-
+[seal::SEALContext](https://maokami.github.io/SEAL/classseal_1_1_s_e_a_l_context.html)
+[seal::SEALContext::ContextData](https://maokami.github.io/SEAL/classseal_1_1_s_e_a_l_context_1_1_context_data.html)
 
 ### Details
+ + Validate Encryption Parameters
+ + Create a chain of ContextData
 
-These are Params in SEAL
-+ scheme: scheme_type
-+ poly_modulus_degree: std::size_t
-+ coeff_modulus: const std::vector< Modulus > & 
-+ plain_modulus: const Modulus &
-+ random_generator: std::shared_ptr< UniformRandomGeneratorFactory >
+#### SEALContext
+Performs sanity checks (validation) and pre-computations for a given set of encryption parameters. While the EncryptionParameters class is intended to be a light-weight class to store the encryption parameters, the SEALContext class is a heavy-weight class that is constructed from a given set of encryption parameters. **It validates the parameters for correctness, evaluates their properties, and performs and stores the results of several costly pre-computations.**
 
-#### EncryptionParameters
-Represents user-customizable encryption scheme settings. The parameters (most importantly poly_modulus, coeff_modulus, plain_modulus) significantly affect the performance, capabilities, and security of the encryption scheme. Once an instance of EncryptionParameters is populated with appropriate parameters, it can be used to create an instance of the SEALContext class, which verifies the validity of the parameters, and performs necessary pre-computations.
+After the user has set at least the poly_modulus, coeff_modulus, and plain_modulus parameters in a given EncryptionParameters instance, the parameters can be validated for correctness and functionality by constructing an instance of SEALContext. The constructor of SEALContext does all of its work automatically, and concludes by constructing and storing an instance of the EncryptionParameterQualifiers class, with its flags set according to the properties of the given parameters. If the created instance of EncryptionParameterQualifiers has the parameters_set flag set to true, the given parameter set has been deemed valid and is ready to be used. If the parameters were for some reason not appropriately set, the parameters_set flag will be false, and a new SEALContext will have to be created after the parameters are corrected.
 
-Picking appropriate encryption parameters is essential to enable a particular application while balancing performance and security. Some encryption settings will not allow some inputs (e.g. attempting to encrypt a polynomial with more coefficients than poly_modulus or larger coefficients than plain_modulus) or, support the desired computations (with noise growing too fast due to too large plain_modulus and too small coeff_modulus).
+// TODO : 아랫 문단 이해하기
+By default, SEALContext creates a chain of SEALContext::ContextData instances. The first one in the chain corresponds to special encryption parameters that are reserved to be used by the various key classes (SecretKey, PublicKey, etc.). These are the exact same encryption parameters that are created by the user and passed to th constructor of SEALContext. The functions key_context_data() and key_parms_id() return the ContextData and the parms_id corresponding to these special parameters. The rest of the ContextData instances in the chain correspond to encryption parameters that are derived from the first encryption parameters by always removing the last one of the moduli in the coeff_modulus, until the resulting parameters are no longer valid, e.g., there are no more primes left. These derived encryption parameters are used by ciphertexts and plaintexts and their respective ContextData can be accessed through the get_context_data(parms_id_type) function. The functions first_context_data() and last_context_data() return the ContextData corresponding to the first and the last set of parameters in the "data" part of the chain, i.e., the second and the last element in the full chain. The chain itself is a doubly linked list, and is referred to as the modulus switching chain.
 
-parms_id
-    The EncryptionParameters class maintains at all times a 256-bit hash of the currently set encryption parameters called the parms_id. This hash acts as a unique identifier of the encryption parameters and is used by all further objects created for these encryption parameters. The parms_id is not intended to be directly modified by the user but is used internally for pre-computation data lookup and input validity checks. In modulus switching the user can use the parms_id to keep track of the chain of encryption parameters. The parms_id is not exposed in the public API of EncryptionParameters, but can be accessed through the SEALContext::ContextData class once the SEALContext has been created.
-
-Thread Safety
-    In general, reading from EncryptionParameters is thread-safe, while mutating is not.
-
-Warning
-    Choosing inappropriate encryption parameters may lead to an encryption scheme that is not secure, does not perform well, and/or does not support the input and computation of the desired application. We highly recommend consulting an expert in RLWE-based encryption when selecting parameters, as this is where inexperienced users seem to most often make critical mistakes. 
-
-#### EncryptionParameterQualifiers
-Stores a set of attributes (qualifiers) of a set of encryption parameters. These parameters are mainly used internally in various parts of the library, e.g., to determine which algorithmic optimizations the current support. The qualifiers are automatically created by the SEALContext class, silently passed on to classes such as Encryptor, Evaluator, and Decryptor, and the only way to change them is by changing the encryption parameters themselves. In other words, a user will never have to create their own instance of this class, and in most cases never have to worry about it at all. 
-
-#### Modulus
-Represent an integer modulus of up to 61 bits. An instance of the Modulus class represents a non-negative integer modulus up to 61 bits. In particular, the encryption parameter plain_modulus, and the primes in coeff_modulus, are represented by instances of Modulus. The purpose of this class is to **perform and store the pre-computation required by Barrett reduction**.
-
-Thread Safety
-    In general, reading from Modulus is thread-safe as long as no other thread is concurrently mutating it.
-
-See also
-    EncryptionParameters for a description of the encryption parameters. 
-
-#### CoeffModulus
-This class contains static methods for creating a coefficient modulus easily. Note that while these functions take a sec_level_type argument, all security guarantees are lost if the output is used with encryption parameters with a mismatching value for the poly_modulus_degree.
-
-The default value sec_level_type::tc128 provides a very high level of security and is the default security level enforced by Microsoft SEAL when constructing a SEALContext object. Normal users should not have to specify the security level explicitly anywhere.
-
-#### PlainModulus
-This class contains static methods for creating a plaintext modulus easily. 
-
+#### SEALContext::ContextData
+Class to hold pre-computation data for a given set of encryption parameters.
 
 ---
 ## HEaaN
@@ -128,9 +98,4 @@ Context context = makeContext(preset);
 
 ### Details
 
-These are Params in HEaaN
-
-#### HEaaN::ParameterPreset
-Class of Parameter presets.
-
-The first alphabet denotes whether a parameter is full or somewhat homomorphic encryption. Somewhat homomorphic encryption parameters can use only a finite number of multiplications while full homomorphic encryption parameters can use infinitely many multiplications via bootstrapping. The second alphabet denotes the size of log2(N), where N denotes the dimension of the base ring. V(Venti), G(Grande), T(Tall), S(Short), D(Demi) represent log2(N) = 17, 16, 15, 14, 13, respectively. For somewhat parameters, a number that comes after these alphabets indicates total available multiplication number.
+No public informations

@@ -9,8 +9,76 @@
 ~~~
 
 ### Related Classes
+Too many..
 
 ### Details
+These are Operation in OpenFHE
+ + ComposedEvalMult
+ + EvalAdd
+ + EvalAddInPlace
+ + EvalAddMany
+ + EvalAddManyInPlace
+ + EvalAddMutable
+ + EvalAddMutableInPlace
+ + EvalAtIndex
+ + EvalAutomorphism
+ + EvalBootstrap
+ + EvalBootstrapSetup
+ + EvalCKKStoFHEW
+ + EvalCKKStoFHEWPrecompute
+ + EvalCKKStoFHEWSetup
+ + EvalChebyshevFunction
+ + EvalChebyshevSeries
+ + EvalChebyshevSeriesLinear
+ + EvalChebyshevSeriesPS
+ + EvalCompareSchemeSwitching
+ + EvalCompareSwitchPrecompute
+ + EvalCos
+ + EvalDivide
+ + EvalFHEWtoCKKS
+ + EvalFHEWtoCKKSSetup
+ + EvalFastRotation
+ + EvalFastRotationExt
+ + EvalFastRotationPrecompute
+ + EvalInnerProduct
+ + EvalLinearWSum
+ + EvalLinearWSumMutable
+ + EvalLogistic
+ + EvalMaxSchemeSwitching
+ + EvalMaxSchemeSwitchingAlt
+ + EvalMerge
+ + EvalMinSchemeSwitching
+ + EvalMinSchemeSwitchingAlt
+ + EvalMult
+ + EvalMultAndRelinearize
+ + EvalMultInPlace
+ + EvalMultMany
+ + EvalMultMutable
+ + EvalMultMutableInPlace
+ + EvalMultNoRelin
+ + EvalNegate
+ + EvalNegateInPlace
+ + EvalPoly
+ + EvalPolyLinear
+ + EvalPolyPS
+ + EvalRotate
+ + EvalSchemeSwitchingSetup
+ + EvalSin
+ + EvalSquare
+ + EvalSquareInPlace
+ + EvalSquareMutable
+ + EvalSub
+ + EvalSubInPlace
+ + EvalSubMutable
+ + EvalSubMutableInPlace
+ + EvalSum
+ + EvalSumCols
+ + EvalSumRows
+ + KeySwitch
+ + KeySwitchInPlace
+ + LevelReduce
+ + LevelReduceInPlace
+ + ReEncrypt
 
 ---
 
@@ -34,6 +102,56 @@
 [seal::Evaluator](https://maokami.github.io/SEAL/classseal_1_1_evaluator.html)
 
 ### Details
+These are Operation in SEAL
+ + add
+ + add_inplace
+ + add_many
+ + add_plain
+ + add_plain_inplace
+ + apply_galois
+ + apply_galois_inplace
+ + complex_conjugate
+ + complex_conjugate_inplace
+ + exponentiate
+ + exponentiate_inplace
+ + mod_reduce_to
+ + mod_reduce_to_inplace
+ + mod_reduce_to_next
+ + mod_reduce_to_next_inplace
+ + mod_switch_to
+ + mod_switch_to_inplace
+ + mod_switch_to_next
+ + mod_switch_to_next_inplace
+ + multiply
+ + multiply_inplace
+ + multiply_many
+ + multiply_plain
+ + multiply_plain_inplace
+ + negate
+ + negate_inplace
+ + relinearize
+ + relinearize_inplace
+ + rescale_to
+ + rescale_to_inplace
+ + rescale_to_next
+ + rescale_to_next_inplace
+ + rotate_columns
+ + rotate_columns_inplace
+ + rotate_rows
+ + rotate_rows_inplace
+ + rotate_vector
+ + rotate_vector_inplace
+ + square
+ + square_inplace
+ + sub
+ + sub_inplace
+ + sub_plain
+ + sub_plain_inplace
+ + transform_from_ntt
+ + transform_from_ntt_inplace
+ + transform_to_ntt
+ + transform_to_ntt_inplace
+
 #### Evaluator
 Provides operations on ciphertexts. Due to the properties of the encryption scheme, the arithmetic operations pass through the encryption layer to the underlying plaintext, changing it according to the type of the operation. Since the plaintext elements are fundamentally polynomials in the polynomial quotient ring Z_T\[x\]/(X^N+1), where T is the plaintext modulus and X^N+1 is the polynomial modulus, this is the ring where the arithmetic operations will take place. BatchEncoder (batching) provider an alternative possibly more convenient view of the plaintext elements as 2-by-(N/2) matrices of integers modulo the plaintext modulus. In the batching view the arithmetic operations act on the matrices element-wise. Some of the operations only apply in the batching view, such as matrix row and column rotations. Other operations such as relinearization have no semantic meaning but are necessary for performance reasons.
 

@@ -23,10 +23,10 @@
 ### Related Classes
 [Template Class KeyPair](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1KeyPair.html#template-parameter-order)
 
-[Template Class CryptoContextImpl](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1CryptoContextImpl.html) 
--> [Template Class SchemeBase](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1SchemeBase.html?highlight=evalmultkeygen) 
-	-> [Template Class LeveledSHEBase](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1LeveledSHEBase.html?highlight=evalmultkeygen) 
-	-> [Class SWITCHCKKSRNS](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1SWITCHCKKSRNS.html?highlight=SWITCHCKKSRNS#class-switchckksrns "Permalink to this headline")
++ [Template Class CryptoContextImpl](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1CryptoContextImpl.html) 
+	+ [Template Class SchemeBase](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1SchemeBase.html?highlight=evalmultkeygen) 
+		+ [Template Class LeveledSHEBase](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1LeveledSHEBase.html?highlight=evalmultkeygen) 
+		+ [Class SWITCHCKKSRNS](https://openfhe-development.readthedocs.io/en/latest/api/classlbcrypto_1_1SWITCHCKKSRNS.html?highlight=SWITCHCKKSRNS#class-switchckksrns "Permalink to this headline")
   
  
 ### Details
